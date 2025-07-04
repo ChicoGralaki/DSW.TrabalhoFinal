@@ -42,8 +42,6 @@ A arquitetura segue uma abordagem modular, separando responsabilidades em difere
 - **ts-node-dev** — Execução automática em ambiente de desenvolvimento
 - **@types/*** — Tipagens para TypeScript
 
-> **Observação:** Não utilizamos Multer, Celebrate ou Joi neste projeto.
-
 ---
 
 ## 🚀 Como rodar o projeto
@@ -119,14 +117,6 @@ A arquitetura segue uma abordagem modular, separando responsabilidades em difere
   - `GET /episodes` (listar)
   - `PUT /episodes/:id` (atualizar)
   - `DELETE /episodes/:id` (deletar)
-
----
-
-## 🔒 Observações
-
-- O sistema de recuperação de senha está implementado no back-end, pronto para integração com serviço de e-mail.
-- O projeto utiliza `.gitignore` para evitar que o `node_modules` e outros arquivos não essenciais sejam enviados ao repositório.
-- O código é organizado em camadas para facilitar a manutenção e expansão do sistema.
 
 ---
 
