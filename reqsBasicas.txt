@@ -1,0 +1,126 @@
+===========================================
+Exemplos de Requisições CRUD - API Podcast
+===========================================
+
+# Observação:
+# Para rotas que exigem autenticação, lembre-se de substituir SEU_TOKEN_AQUI pelo token JWT recebido ao fazer login.
+# Os IDs utilizados nos exemplos são ilustrativos, ajuste conforme a resposta da sua API.
+
+-------------------------------------------
+1. AUTENTICAÇÃO BÁSICA
+-------------------------------------------
+
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "email": "admin@podtech.com",
+  "password": "senha123"
+}
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@podtech.com",
+  "password": "senha123"
+}
+
+-------------------------------------------
+2. CRUD COMPLETO - PODCAST
+-------------------------------------------
+
+# CRIAR (POST)
+POST http://localhost:3000/podcasts
+Content-Type: application/json
+Authorization: Bearer SEU_TOKEN_AQUI
+
+{
+  "nome": "PodTech",
+  "apresentador": "João Silva",
+  "categoria": "Tecnologia",
+  "plataforma": "Spotify",
+  "periodicidade": "Semanal",
+  "descricao": "Um podcast sobre tecnologia e inovação.",
+  "ano_criacao": 2024,
+  "pais_origem": "Brasil",
+  "idioma": "Português"
+}
+
+# CONSULTAR TODOS (GET)
+GET http://localhost:3000/podcasts
+
+# CONSULTAR POR ID (GET)
+GET http://localhost:3000/podcasts/1
+
+# ATUALIZAR (PUT)
+PUT http://localhost:3000/podcasts/1
+Content-Type: application/json
+Authorization: Bearer SEU_TOKEN_AQUI
+
+{
+  "nome": "PodTech Atualizado",
+  "descricao": "Podcast atualizado sobre tecnologia."
+}
+
+# DELETAR (DELETE)
+DELETE http://localhost:3000/podcasts/1
+Authorization: Bearer SEU_TOKEN_AQUI
+
+-------------------------------------------
+3. CRUD COMPLETO - EPISÓDIO
+-------------------------------------------
+
+# CRIAR (POST)
+POST http://localhost:3000/episodes
+Content-Type: application/json
+Authorization: Bearer SEU_TOKEN_AQUI
+
+{
+  "titulo": "O Futuro da IA",
+  "descricao": "Discussão sobre inteligência artificial.",
+  "duracao": "00:45:00",
+  "data_publicacao": "2024-07-05",
+  "convidados": "Maria Tech, Pedro Robô",
+  "podcastId": 1,
+  "numero": 1,
+  "url_audio": "https://exemplo.com/episodio1.mp3",
+  "palavras_chave": "IA, tecnologia, futuro"
+}
+
+# CONSULTAR TODOS (GET)
+GET http://localhost:3000/episodes
+
+# CONSULTAR POR ID (GET)
+GET http://localhost:3000/episodes/1
+
+# ATUALIZAR (PUT)
+PUT http://localhost:3000/episodes/1
+Content-Type: application/json
+Authorization: Bearer SEU_TOKEN_AQUI
+
+{
+  "titulo": "O Futuro da IA - Atualizado",
+  "descricao": "Episódio revisado sobre inteligência artificial."
+}
+
+# DELETAR (DELETE)
+DELETE http://localhost:3000/episodes/1
+Authorization: Bearer SEU_TOKEN_AQUI
+
+-------------------------------------------
+4. CONSULTAS ADICIONAIS (GET)
+-------------------------------------------
+
+# Listar episódios de um podcast específico
+GET http://localhost:3000/episodes?podcastId=1
+
+-------------------------------------------
+
+Solicitar recuperação de senha:
+POST /auth/forgot-password
+Body: { "email": "seu@email.com" }
+
+Redefinir senha:
+POST /auth/reset-password
+Body: { "token": "O_TOKEN_RECEBIDO", "newPassword": "novasenha123" }
